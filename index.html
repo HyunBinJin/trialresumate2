@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resumate - Home</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+    }
+
+    nav {
+      margin-top: 1rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-size: 1rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .slogan-banner {
+      background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1500&q=80');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 15rem 2rem;
+      text-align: center;
+      color: white;
+      position: relative;
+      margin: 2rem 0;
+      overflow: hidden;
+    }
+
+    .slogan-banner::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.55);
+      z-index: 0;
+    }
+
+    .slogan-text {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .slogan-text h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    .slogan-text p {
+      font-size: 1.2rem;
+    }
+
+    .main-content {
+      text-align: center;
+      padding: 4rem 1rem;
+      background-color: #ecf0f1;
+    }
+
+    .main-content h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .cta-button {
+      background-color: #2c3e50;
+      color: white;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      display: inline-block;
+    }
+
+    .cta-button:hover {
+      background-color: gray;
+    }
+
+    .feature {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin: 3rem auto;
+      padding: 2rem;
+      max-width: 1000px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature div {
+      flex: 1;
+      min-width: 200px;
+      text-align: center;
+    }
+
+    .feature h3 {
+      font-size: 1.5rem;
+      color: #2c3e50;
+    }
+
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Resumate</h1>
+    <p>Your Resume, Made Easy</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="faq.html">FAQ</a>
+      <a href="info.html">Info Input</a>
+      <a href="preview.html">Resume</a>
+      <a href="contact.html">Contact</a>
+      <a href="selfintroinput.html">Self Introduction</a>
+    </nav>
+  </header>
+
+  <section class="slogan-banner">
+    <div class="slogan-text">
+      <h2>Stand Out With a Resume That Works</h2>
+      <p>Professional. Modern. Tailored for you.</p>
+      <a href="info.html" class="cta-button">Get Started</a>
+    </div>
+  </section>
+
+  <section class="main-content">
+    <h2>Start Building Your Perfect Resume</h2>
+    <p>Quick and easy to use. Create a professional resume in minutes with customizable templates. Whether you're starting your career or advancing, Resumate makes it simple and fast to get noticed.</p>
+
+  </section>
+
+  <section class="feature">
+    <div>
+      <h3>Easy</h3>
+      <p>Intuitive design, no experience needed.</p>
+    </div>
+    <div>
+      <h3>Professional</h3>
+      <p>Choose from stylish templates.</p>
+    </div>
+    <div>
+      <h3>Instant Preview</h3>
+      <p>See your resume as you build it.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Resumate. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

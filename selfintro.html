@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Self-Introduction Preview</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1.5rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: start;
+    }
+
+    .a4-paper {
+      width: 794px;
+      height: 1123px;
+      background-color: white;
+      padding: 3rem;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      overflow: auto;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 10rem;
+      color: #2c3e50;
+    }
+
+    .qa-section {
+      margin-bottom: 2.5rem;
+    }
+
+    .question {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+    }
+
+    .answer {
+      padding: 1rem;
+      white-space: pre-wrap;
+      line-height: 1.6;
+    }
+
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+
+    @media print {
+      body, html {
+        margin: 0;
+        padding: 0;
+      }
+
+      header,
+      footer,
+      .buttons,
+      nav {
+        display: none !important;
+      }
+
+      main {
+        padding: 0;
+        display: block;
+      }
+
+      .a4-paper {
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+        padding: 2rem;
+      }
+    }
+
+    .buttons {
+      position: fixed;
+      top: 8rem;
+      right: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .buttons button {
+      background-color: #2c3e50;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .buttons button:hover {
+      background-color: gray;
+    }
+  </style>
+
+  <!-- PDF & Canvas Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+  <header>
+    <h1>Resumate</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="faq.html">FAQ</a>
+      <a href="info.html">Info Input</a>
+      <a href="preview.html">Resume</a>
+      <a href="contact.html">Contact</a>
+      <a href="selfintroinput.html">Self Introduction</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="a4-paper" id="paper">
+      <h2>Self Introduction</h2>
+
+      <div class="qa-section">
+        <div class="question" id="q1">Question 1</div>
+        <div class="answer" id="a1">Answer 1</div>
+      </div>
+
+      <div class="qa-section">
+        <div class="question" id="q2">Question 2</div>
+        <div class="answer" id="a2">Answer 2</div>
+      </div>
+
+      <div class="qa-section">
+        <div class="question" id="q3">Question 3</div>
+        <div class="answer" id="a3">Answer 3</div>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <span style="margin-left: 1rem; font-weight: bold;">More Functions:</span>
+      <button onclick="saveToPDF()">Save as PDF</button>
+      <button onclick="window.print()">Print</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Resumate. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const data = JSON.parse(localStorage.getItem('selfIntroData'));
+    if (data) {
+      document.getElementById('q1').textContent = '1. ' + (data.question1 || 'Question 1');
+      document.getElementById('q2').textContent = '2. ' + (data.question2 || 'Question 2');
+      document.getElementById('q3').textContent = '3. ' + (data.question3 || 'Question 3');
+
+      document.getElementById('a1').textContent = data.answer1 || '';
+      document.getElementById('a2').textContent = data.answer2 || '';
+      document.getElementById('a3').textContent = data.answer3 || '';
+    }
+
+    async function saveToPDF() {
+      const { jsPDF } = window.jspdf;
+      const element = document.getElementById('paper');
+
+      const canvas = await html2canvas(element, {
+        scale: 2,
+        useCORS: true
+      });
+
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'pt', [canvas.width, canvas.height]);
+      pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+      pdf.save('self-introduction.pdf');
+    }
+  </script>
+
+</body>
+</html>
